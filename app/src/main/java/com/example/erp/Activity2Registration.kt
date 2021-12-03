@@ -35,13 +35,18 @@ import android.util.Log
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import android.R.attr.previewImage
+import android.provider.MediaStore
 
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.GetContent
+import androidx.lifecycle.ViewModelProvider
+import java.io.File
 
 class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     private lateinit var auth: FirebaseAuth
     private lateinit var registrationLayout: RelativeLayout
+
+    lateinit var registrationViewModel: Activity2RegistrationViewModel
 
     private lateinit var name: EditText
     private lateinit var srn: EditText
@@ -113,6 +118,8 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
 
         profileImage = findViewById(R.id.profileImage)
 
+        registrationViewModel = ViewModelProvider(this)[Activity2RegistrationViewModel::class.java]
+
         profileImageUri = savedInstanceState?.getParcelable("profileImageUri")
         profileImageUri?.let {
             profileImage.setImageURI(it)
@@ -129,10 +136,14 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
         val selectImageFromGalleryResult = registerForActivityResult(
             ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
-                profileImageUri = uri
-                profileImage.setImageURI(uri)
+                //val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,uri)
+                registrationViewModel.imageRefData.value = uri
             }
         }
+
+        registrationViewModel.imageRefData.observe(this, androidx.lifecycle.Observer {
+            profileImage.setImageURI(registrationViewModel.imageRefData.value)
+        })
 
         selectBtn.setOnClickListener {
             profileImage.visibility = View.VISIBLE
@@ -140,22 +151,21 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
         }
 
         deleteBtn.setOnClickListener {
-            profileImageUri = null
+            registrationViewModel.imageRefData.value = null
+            profileImage.visibility = View.GONE
         }
 
         pickDate()
 
         signUp.setOnClickListener {
             signUpUser()
-            if(profileImageUri != null){
-                uploadImage()
-            }
+            //uploadImage()
         }
 
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelable("profileImageUri", profileImageUri)
+        //outState.putParcelable("profileImageUri", profileImageUri)
         super.onSaveInstanceState(outState)
         mScrollView = findViewById(R.id.mScrollView)
         outState.putIntArray(
@@ -332,9 +342,9 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
                     if (uid != null) {
                         db.collection("studentInfo").document(mailTxt).set(studentInfo)
                     }
-                    /*if(profileImage.isVisible){
+                    if(registrationViewModel.imageRefData.value != null){
                         uploadImage()
-                    }*/
+                    }
                     Toast.makeText(this,"Registered successfully",Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@Activity2Registration,Activity4Login::class.java)
                     startActivity(intent)
@@ -346,11 +356,11 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
             }
     }
     private fun uploadImage() {
-        val imageFileNameRef = findViewById<EditText>(R.id.SRN)
-        val imageFileName: String = imageFileNameRef.text.toString().uppercase().trim{ it <= ' '}
+        val imageFileName = auth.currentUser?.email
         val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$imageFileName.jpg")
-        storageReference.putFile(profileImageUri!!)
+        storageReference.putFile(registrationViewModel.imageRefData.value!!)
             .addOnSuccessListener {
+                Toast.makeText(this,"Uploaded",Toast.LENGTH_SHORT).show()
             }.addOnFailureListener{
                 Toast.makeText(this,"Failed to upload image",Toast.LENGTH_SHORT).show()
             }

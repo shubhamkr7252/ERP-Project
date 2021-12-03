@@ -101,14 +101,11 @@ class AfterLoginNavigation : AppCompatActivity() {
         val authMail = auth.currentUser?.email
         val imageRefUrl = FirebaseStorage.getInstance().reference.child("profileImages/$authMail.jpg").downloadUrl.addOnSuccessListener {
             val imageRef = FirebaseStorage.getInstance().reference.child("profileImages/$authMail.jpg")
-            retrieveImageCore(imageRef)
-        }
-    }
-    private fun retrieveImageCore(imageRef : com.google.firebase.storage.StorageReference) {
-        val localFile = File.createTempFile("tempImage","jpg")
-        imageRef.getFile(localFile).addOnSuccessListener {
-            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-            fragmentViewModel.setImage(bitmap)
+            val localFile = File.createTempFile("tempImage","jpg")
+            imageRef.getFile(localFile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                fragmentViewModel.setImage(bitmap)
+            }
         }
     }
 

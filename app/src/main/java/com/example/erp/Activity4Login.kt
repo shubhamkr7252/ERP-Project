@@ -31,6 +31,8 @@ class Activity4Login : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        FirebaseAuth.getInstance().signOut()
+
         registerText = findViewById(R.id.signUpBut)
         resetText = findViewById(R.id.forgotPasswordText)
         loginButton = findViewById(R.id.loginBut)

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/editProfileLayout"
     tools:context=".EditProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -230,44 +231,14 @@
                     android:layout_marginHorizontal="40sp"
                     android:layout_marginBottom="15sp"
                     android:orientation="horizontal">
+
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="20dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="10sp"
                         android:src="@drawable/ic_outline_school_24"
-                        android:layout_marginEnd="10sp"
-                        app:tint="?attr/colorPrimary"
-                        android:layout_gravity="center_vertical"/>
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="SRN"
-                        tools:ignore="HardcodedText">
-
-                        <EditText
-                            android:id="@+id/editProfileSRN"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            tools:ignore="HardcodedText,LabelFor"
-                            android:importantForAutofill="no" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="40sp"
-                    android:layout_marginBottom="15sp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:visibility="invisible"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_book_24"
-                        android:layout_marginEnd="10sp"
-                        app:tint="?attr/colorPrimary"
-                        android:layout_gravity="center_vertical"/>
+                        app:tint="?attr/colorPrimary" />
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="match_parent"
@@ -314,36 +285,6 @@
                             android:importantForAutofill="no"
                             android:inputType="none"
                             tools:ignore="HardcodedText,LabelFor" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="40sp"
-                    android:layout_marginBottom="15sp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_email_24"
-                        android:layout_marginEnd="10sp"
-                        app:tint="?attr/colorPrimary"
-                        android:layout_gravity="center_vertical"/>
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Mail"
-                        tools:ignore="HardcodedText">
-
-                        <EditText
-                            android:id="@+id/editProfileMail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:importantForAutofill="no"
-                            android:inputType="textEmailAddress"
-                            tools:ignore="HardcodedText,LabelFor"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -410,7 +351,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/saveChangesBut"
+                    android:id="@+id/editProfileSaveChangesBut"
                     android:layout_width="160sp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

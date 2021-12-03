@@ -106,7 +106,7 @@ class ProfileFragment : Fragment() {
         }
 
         logoutBut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut();
+            //FirebaseAuth.getInstance().signOut()
             startActivity(Intent(activity, Activity4Login::class.java))
             activity?.finish()
         }

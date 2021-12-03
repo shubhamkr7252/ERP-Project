@@ -9,4 +9,31 @@ class EditProfileActivityViewModel : ViewModel() {
     val imageRefData: MutableLiveData<Bitmap> by lazy {
         MutableLiveData<Bitmap>()
     }
+    val permanentImageRefData: MutableLiveData<Bitmap> by lazy {
+        MutableLiveData<Bitmap>()
+    }
+    val nameRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val srnRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val phoneRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val birthRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val semesterRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val genderRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val courseRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+    val countryCodeRefData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 }

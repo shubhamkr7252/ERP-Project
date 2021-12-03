@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Patterns
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
@@ -38,8 +39,6 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     lateinit var viewModel: EditProfileActivityViewModel
 
     private lateinit var editProfileName: EditText
-    private lateinit var editProfileSRN: EditText
-    private lateinit var editProfileMail: EditText
     private lateinit var editProfilePhone: EditText
     private lateinit var editProfileBirthdayEditText: EditText
     private lateinit var editProfileGenderSelect: AutoCompleteTextView
@@ -49,8 +48,10 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     private lateinit var editProfileBackButton: MaterialButton
     private lateinit var editProfileSelectBtn: MaterialButton
     private lateinit var editProfileDeleteBtn: MaterialButton
+    private lateinit var editProfileSaveChangesBut: MaterialButton
     private lateinit var editProfileScrollViewLayout: ScrollView
     private lateinit var editProfileProfileImage: ImageView
+    private lateinit var editProfileLayout: RelativeLayout
 
     private var day = 0
     private var month = 0
@@ -94,6 +95,7 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         editProfileProfileImage = findViewById(R.id.editProfileProfileImage)
         editProfileSelectBtn = findViewById(R.id.editProfileSelectBtn)
         editProfileDeleteBtn = findViewById(R.id.editProfileDeleteBtn)
+        editProfileSaveChangesBut = findViewById(R.id.editProfileSaveChangesBut)
 
         auth = Firebase.auth
         val db = Firebase.firestore
@@ -123,8 +125,8 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             }
         }
 
-        viewModel.imageRefData.observe(this, androidx.lifecycle.Observer {
-            editProfileProfileImage.setImageBitmap(viewModel.imageRefData.value)
+        viewModel.imageRefData.observe(this,{
+            editProfileProfileImage.setImageBitmap(it)
         })
 
         editProfileSelectBtn.setOnClickListener {
@@ -134,7 +136,115 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         editProfileDeleteBtn.setOnClickListener {
             viewModel.imageRefData.value = null
         }
+        editProfileSaveChangesBut.setOnClickListener {
+            updateData()
+            finish()
+            onBackPressed()
 
+        }
+
+    }
+
+    private fun updateData() {
+
+        editProfileLayout = findViewById(R.id.editProfileLayout)
+
+        if(editProfileName.text.toString().isEmpty()) {
+            editProfileName.setError("Please input your name",null)
+            editProfileName.requestFocus()
+            return
+        }
+        if(editProfileGenderSelect.text.isEmpty()) {
+            editProfileGenderSelect.setError("Please select your course",null)
+            editProfileGenderSelect.requestFocus()
+            editProfileGenderSelect.onItemClickListener =
+                AdapterView.OnItemClickListener { _, _, _, _ ->
+                    editProfileGenderSelect.error = null
+                }
+            return
+        }
+        if(editProfileBirthdayEditText.text.toString().isEmpty()) {
+            editProfileBirthdayEditText.performClick()
+            Toast.makeText(this,"Birthday filed should not be empty",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(editProfileCourseSelect.text.isEmpty()) {
+            editProfileCourseSelect.setError("Please select your course",null)
+            editProfileCourseSelect.requestFocus()
+            editProfileCourseSelect.onItemClickListener =
+                AdapterView.OnItemClickListener { _, _, _, _ ->
+                    editProfileCourseSelect.error = null
+                }
+            return
+        }
+        if(editProfileSemesterSelect.text.isEmpty()) {
+            editProfileSemesterSelect.setError("Please select your semester",null)
+            editProfileSemesterSelect.requestFocus()
+            editProfileSemesterSelect.onItemClickListener =
+                AdapterView.OnItemClickListener { _, _, _, _ ->
+                    editProfileSemesterSelect.error = null
+                }
+            return
+        }
+
+        if(editProfileCountryCode.text.toString().isEmpty()){
+            editProfileCountryCode.setError("Please select your semester",null)
+            editProfileCountryCode.requestFocus()
+            editProfileCountryCode.onItemClickListener =
+                AdapterView.OnItemClickListener { _, _, _, _ ->
+                    editProfileCountryCode.error = null
+                }
+            return
+        }
+        if(!Patterns.PHONE.matcher(editProfilePhone.text.toString()).matches()) {
+            editProfilePhone.setError("Please input valid phone number",null)
+            editProfilePhone.requestFocus()
+            return
+        }
+
+        val docId = auth.currentUser?.email.toString()
+
+        val nameTxt: String = editProfileName.text.toString().trim{ it <= ' '}
+        val genderTxt: String = editProfileGenderSelect.text.toString().trim{ it <= ' '}
+        val birthTxt : String = editProfileBirthdayEditText.text.toString().trim{ it <= ' '}
+        val courseTxt : String = editProfileCourseSelect.text.toString().trim{ it <= ' '}
+        val semesterTxt : String = editProfileSemesterSelect.text.toString().trim{ it <= ' '}
+        val countryCode : String = editProfileCountryCode.text.toString().trim{ it <= ' '}
+        val phoneTxt : String = editProfilePhone.text.toString().trim{ it <= ' '}
+
+        if(nameTxt != viewModel.nameRefData.value){
+            updateDataCore("Name",nameTxt,docId)
+        }
+        if(genderTxt != viewModel.genderRefData.value){
+            updateDataCore("Gender",genderTxt,docId)
+        }
+        if(birthTxt != viewModel.birthRefData.value){
+            updateDataCore("Birthday",birthTxt,docId)
+        }
+        if(courseTxt != viewModel.courseRefData.value){
+            updateDataCore("Course",courseTxt,docId)
+        }
+        if(semesterTxt != viewModel.semesterRefData.value){
+            updateDataCore("Semester",semesterTxt,docId)
+        }
+        if(countryCode != viewModel.countryCodeRefData.value){
+            updateDataCore("Country Code",countryCode,docId)
+        }
+        if(phoneTxt != viewModel.phoneRefData.value){
+            updateDataCore("Phone",phoneTxt,docId)
+        }
+    }
+
+    private fun updateDataCore(updateItemKey: String, updateItemRef: String, documentRef: String){
+        val studentDetail: MutableMap<String, Any> = HashMap()
+        studentDetail["Name"] = updateItemRef
+        db.collection("studentInfo").whereEqualTo("Name",updateItemKey).get().addOnCompleteListener {
+            db.collection("studentInfo").document(documentRef).update(studentDetail).addOnSuccessListener {
+                Toast.makeText(this,"Data updated",Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this,"Some error occurred",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -154,9 +264,9 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     }
 
     private fun retrieveImage() {
-        val authMail = auth.currentUser?.email
-        val imageRefUrl = FirebaseStorage.getInstance().reference.child("profileImages/$authMail.jpg").downloadUrl.addOnSuccessListener {
-            val imageRef = FirebaseStorage.getInstance().reference.child("profileImages/$authMail.jpg")
+        val imageRefName = auth.currentUser?.email
+        val imageRefUrl = FirebaseStorage.getInstance().reference.child("profileImages/$imageRefName.jpg").downloadUrl.addOnSuccessListener {
+            val imageRef = FirebaseStorage.getInstance().reference.child("profileImages/$imageRefName.jpg")
             retrieveImageCore(imageRef)
         }
     }
@@ -166,6 +276,16 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             viewModel.imageRefData.value = bitmap
         }
+    }
+
+    private fun uploadImage() {
+        val imageFileName = auth.currentUser?.email
+        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$imageFileName.jpg")
+        storageReference.putFile(viewModel.imageRefData.value.toString().toUri())
+            .addOnSuccessListener {
+            }.addOnFailureListener{
+                Toast.makeText(this,"Failed to upload image",Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun initializeAutoCompleteTextViewLayoutAndData() {
@@ -189,17 +309,6 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         val editProfileCountryCodeList = resources.getStringArray(R.array.countryCodes)
         val editProfileCountryCodeArrayAdapter = ArrayAdapter(this,R.layout.dropdown_item,editProfileCountryCodeList)
         editProfileCountryCode.setAdapter(editProfileCountryCodeArrayAdapter)
-    }
-
-    private fun uploadImage() {
-        val imageFileNameRef = findViewById<EditText>(R.id.SRN)
-        val imageFileName: String = imageFileNameRef.text.toString().uppercase().trim{ it <= ' '}
-        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$imageFileName.jpg")
-        storageReference.putFile(viewModel.imageRefData.value.toString().toUri())
-            .addOnSuccessListener {
-            }.addOnFailureListener{
-                Toast.makeText(this,"Failed to upload image",Toast.LENGTH_SHORT).show()
-            }
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -264,9 +373,8 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     }
 
     private fun retrieveData() {
+
         val nameTxt = StringBuffer()
-        val srnTxt = StringBuffer()
-        val mailTxt = StringBuffer()
         val phoneTxt = StringBuffer()
         val semTxt = StringBuffer()
         val courseTxt = StringBuffer()
@@ -275,8 +383,6 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         val countryCodeText = StringBuffer()
 
         editProfileName = findViewById(R.id.editProfileName)
-        editProfileSRN = findViewById(R.id.editProfileSRN)
-        editProfileMail = findViewById(R.id.editProfileMail)
         editProfilePhone = findViewById(R.id.editProfilePhone)
         editProfileBirthdayEditText = findViewById(R.id.editProfileBirthdayEditText)
         editProfileProfileImage = findViewById(R.id.editProfileProfileImage)
@@ -292,21 +398,27 @@ class EditProfileActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             .addOnCompleteListener {
                 if(it.isSuccessful) {
                     for(document in it.result!!) {
-                        val temp = document.id
+
                         if(document.id == authMail){
                             editProfileName.setText(nameTxt.append(document.data.getValue("Name")).toString())
-                            editProfileSRN.setText(srnTxt.append(document.data.getValue("SRN")).toString())
-                            editProfileMail.setText(mailTxt.append(document.data.getValue("Email")).toString())
                             tempTxt = countryCodeText.append(document.data.getValue("Country Code"))
                             editProfileCountryCode.setText(tempTxt.toString(),false)
                             editProfilePhone.setText(phoneTxt.append(document.data.getValue("Phone")).toString())
                             tempTxt = courseTxt.append(document.data.getValue("Course"))
-                            editProfileCourseSelect.setText(tempTxt.toString(),false)
+                            editProfileCourseSelect.setText(tempTxt,false)
                             tempTxt = semTxt.append(document.data.getValue("Semester"))
                             editProfileSemesterSelect.setText(tempTxt.toString(),false)
                             editProfileBirthdayEditText.setText(birthTxt.append(document.data.getValue("Birthday")).toString())
                             tempTxt = genderTxt.append(document.data.getValue("Gender"))
                             editProfileGenderSelect.setText(tempTxt.toString(),false)
+
+                            viewModel.nameRefData.value = nameTxt.toString()
+                            viewModel.countryCodeRefData.value = countryCodeText.toString()
+                            viewModel.phoneRefData.value = phoneTxt.toString()
+                            viewModel.courseRefData.value = courseTxt.toString()
+                            viewModel.semesterRefData.value = semTxt.toString()
+                            viewModel.birthRefData.value = birthTxt.toString()
+                            viewModel.genderRefData.value = genderTxt.toString()
                         }
                     }
 
