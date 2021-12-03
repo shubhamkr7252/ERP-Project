@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/SK/AndroidStudioProjects/ERP/app/src/main/res/layout/activity_activity2_registration.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/SK/AndroidStudioProjects/ERP/app/src/main/res/layout/activity_after_login_navigation.xml" value="0.1685185185185185" />
+        <entry key="..\:/Users/SK/AndroidStudioProjects/ERP/app/src/main/res/layout/activity_change_profile_image.xml" value="0.1685185185185185" />
+        <entry key="..\:/Users/SK/AndroidStudioProjects/ERP/app/src/main/res/layout/activity_edit_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/SK/AndroidStudioProjects/ERP/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
