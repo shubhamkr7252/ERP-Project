@@ -62,13 +62,13 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
     private lateinit var countryCode: AutoCompleteTextView
 
     private lateinit var backButton: MaterialButton
-    private lateinit var selectBtn: MaterialButton
-    private lateinit var deleteBtn: MaterialButton
-    private lateinit var profileImage: ImageView
+//    private lateinit var selectBtn: MaterialButton
+//    private lateinit var deleteBtn: MaterialButton
+//    private lateinit var profileImage: ImageView
     private lateinit var linearProgressIndicator: LinearProgressIndicator
     private lateinit var mScrollView: ScrollView
 
-    private var profileImageUri: Uri? = null
+//    private var profileImageUri: Uri? = null
 
     private var day = 0
     private var month = 0
@@ -116,50 +116,49 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
         linearProgressIndicator = findViewById(R.id.linearProgressIndicator)
         linearProgressIndicator.visibility = View.GONE
 
-        profileImage = findViewById(R.id.profileImage)
+//        profileImage = findViewById(R.id.profileImage)
 
         registrationViewModel = ViewModelProvider(this)[Activity2RegistrationViewModel::class.java]
 
-        profileImageUri = savedInstanceState?.getParcelable("profileImageUri")
-        profileImageUri?.let {
-            profileImage.setImageURI(it)
-        }
+//        profileImageUri = savedInstanceState?.getParcelable("profileImageUri")
+//        profileImageUri?.let {
+//            profileImage.setImageURI(it)
+//        }
 
         backButton.setOnClickListener {
             onBackPressed()
         }
-        selectBtn = findViewById(R.id.selectBtn)
-        deleteBtn = findViewById(R.id.deleteBtn)
+//        selectBtn = findViewById(R.id.selectBtn)
+//        deleteBtn = findViewById(R.id.deleteBtn)
 
         initializeAutoCompleteTextViewLayoutAndData()
 
-        val selectImageFromGalleryResult = registerForActivityResult(
-            ActivityResultContracts.GetContent()) { uri: Uri? ->
-            uri?.let {
-                //val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,uri)
-                registrationViewModel.imageRefData.value = uri
-            }
-        }
+//        val selectImageFromGalleryResult = registerForActivityResult(
+//            ActivityResultContracts.GetContent()) { uri: Uri? ->
+//            uri?.let {
+//                //val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,uri)
+//                registrationViewModel.imageRefData.value = uri
+//            }
+//        }
+//
+//        registrationViewModel.imageRefData.observe(this, androidx.lifecycle.Observer {
+//            profileImage.setImageURI(registrationViewModel.imageRefData.value)
+//        })
 
-        registrationViewModel.imageRefData.observe(this, androidx.lifecycle.Observer {
-            profileImage.setImageURI(registrationViewModel.imageRefData.value)
-        })
-
-        selectBtn.setOnClickListener {
-            profileImage.visibility = View.VISIBLE
-            selectImageFromGalleryResult.launch("image/*")
-        }
-
-        deleteBtn.setOnClickListener {
-            registrationViewModel.imageRefData.value = null
-            profileImage.visibility = View.GONE
-        }
+//        selectBtn.setOnClickListener {
+//            profileImage.visibility = View.VISIBLE
+//            selectImageFromGalleryResult.launch("image/*")
+//        }
+//
+//        deleteBtn.setOnClickListener {
+//            registrationViewModel.imageRefData.value = null
+//            profileImage.visibility = View.GONE
+//        }
 
         pickDate()
 
         signUp.setOnClickListener {
             signUpUser()
-            //uploadImage()
         }
 
     }
@@ -216,6 +215,8 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
 
         registrationLayout = findViewById(R.id.registrationLayout)
 
+        val birthTxt : String = birthdayEditText.text.toString().trim{ it <= ' '}
+
         if(name.text.toString().isEmpty()) {
             name.setError("Please input your name",null)
             name.requestFocus()
@@ -229,10 +230,14 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
             }
             return
         }
-
         if(birthdayEditText.text.toString().isEmpty()) {
             birthdayEditText.performClick()
             Toast.makeText(this,"Birthday filed should not be empty",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(calculateAgeFromDob(birthTxt,"dd MMMM yyyy") < 17) {
+            birthdayEditText.performClick()
+            Toast.makeText(this,"You should be above 17 years to register",Toast.LENGTH_SHORT).show()
             return
         }
         if(srn.text.toString().isEmpty()) {
@@ -266,7 +271,6 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
             mail.requestFocus()
             return
         }
-
         if(countryCode.text.toString().isEmpty()){
             countryCode.setError("Please select your semester",null)
             countryCode.requestFocus()
@@ -308,11 +312,10 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
 
         val nameTxt: String = name.text.toString().trim{ it <= ' '}
         val genderTxt: String = genderSelect.text.toString().trim{ it <= ' '}
-        val birthTxt : String = birthdayEditText.text.toString().trim{ it <= ' '}
-        val srnTxt: String = srn.text.toString().uppercase().trim{ it <= ' '}
+        val srnTxt: String = srn.text.toString().lowercase().trim{ it <= ' '}
         val courseTxt : String = courseSelect.text.toString().trim{ it <= ' '}
         val semesterTxt : String = semesterSelect.text.toString().trim{ it <= ' '}
-        val mailTxt: String = mail.text.toString().trim{ it <= ' '}
+        val mailTxt: String = mail.text.toString().lowercase().trim{ it <= ' '}
         val countryCode : String = countryCode.text.toString().trim{ it <= ' '}
         val phoneTxt : String = phone.text.toString().trim{ it <= ' '}
         val passTxt: String = password.text.toString().trim{ it <= ' '}
@@ -340,31 +343,30 @@ class Activity2Registration : AppCompatActivity(), DatePickerDialog.OnDateSetLis
                     studentInfo["UID"] = auth.currentUser?.uid.toString()
 
                     if (uid != null) {
-                        db.collection("studentInfo").document(mailTxt).set(studentInfo)
+                        db.collection("studentInfo").document(auth.currentUser?.email.toString()).set(studentInfo)
                     }
-                    if(registrationViewModel.imageRefData.value != null){
-                        uploadImage()
-                    }
-                    Toast.makeText(this,"Registered successfully",Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@Activity2Registration,Activity4Login::class.java)
+//                    if(registrationViewModel.imageRefData.value != null){
+//                        uploadImage()
+//                    }
+                    val intent = Intent(this@Activity2Registration,AfterLoginNavigation::class.java)
                     startActivity(intent)
-                    finish()
+                    Toast.makeText(this,"Registered successfully",Toast.LENGTH_SHORT).show()
                     linearProgressIndicator.visibility = View.GONE
                 } else {
                     Toast.makeText(this@Activity2Registration,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
                 }
             }
     }
-    private fun uploadImage() {
-        val imageFileName = auth.currentUser?.email
-        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$imageFileName.jpg")
-        storageReference.putFile(registrationViewModel.imageRefData.value!!)
-            .addOnSuccessListener {
-                Toast.makeText(this,"Uploaded",Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener{
-                Toast.makeText(this,"Failed to upload image",Toast.LENGTH_SHORT).show()
-            }
-    }
+//    private fun uploadImage() {
+//        val imageFileName = auth.currentUser?.email
+//        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$imageFileName.jpg")
+//        storageReference.putFile(registrationViewModel.imageRefData.value!!)
+//            .addOnSuccessListener {
+//                Toast.makeText(this,"Uploaded",Toast.LENGTH_SHORT).show()
+//            }.addOnFailureListener{
+//                Toast.makeText(this,"Failed to upload image",Toast.LENGTH_SHORT).show()
+//            }
+//    }
 
     @SuppressLint("SimpleDateFormat")
     private fun getDateCalendar() {

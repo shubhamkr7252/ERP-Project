@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class EditProfileActivityViewModel : ViewModel() {
-    val imageRefData: MutableLiveData<Bitmap> by lazy {
-        MutableLiveData<Bitmap>()
+    val imageRefData: MutableLiveData<Uri> by lazy {
+        MutableLiveData<Uri>()
     }
-    val permanentImageRefData: MutableLiveData<Bitmap> by lazy {
-        MutableLiveData<Bitmap>()
+    val permanentImageRefData: MutableLiveData<Uri> by lazy {
+        MutableLiveData<Uri>()
     }
     val nameRefData: MutableLiveData<String> by lazy {
         MutableLiveData<String>()

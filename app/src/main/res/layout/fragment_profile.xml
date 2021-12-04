@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
+                <!--<com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardDesignLayout"
                     android:layout_width="150sp"
                     android:layout_height="150sp"
@@ -35,10 +35,10 @@
                     app:cardUseCompatPadding="true">
 
                     <ImageView
-                        android:layout_width="80sp"
-                        android:layout_height="80sp"
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_outline_face_24"
+                        android:src="@drawable/reva_logo_color"
                         app:tint="?attr/colorPrimaryContainer" />
 
                     <ImageView
@@ -49,7 +49,7 @@
                         android:layout_gravity="center"
                         android:scaleType="centerCrop"
                         tools:ignore="ContentDescription" />
-                </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>-->
 
                 <TextView
                     android:id="@+id/tv_result_name"

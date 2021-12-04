@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
     private lateinit var logoutBut : MaterialButton
     private lateinit var gender : TextView
     private lateinit var editProfileBut : MaterialButton
-    private lateinit var profileImg : ImageView
+//    private lateinit var profileImg : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +63,7 @@ class ProfileFragment : Fragment() {
         editProfileBut = view.findViewById(R.id.editProfileBut)
 
         auth = Firebase.auth
-        profileImg = view.findViewById(R.id.profileImage)
+//        profileImg = view.findViewById(R.id.profileImage)
 
         val swipeRefresh = view.findViewById<SwipeRefreshLayout>(R.id.profileFragmentSwipeRefresh)
 
@@ -91,22 +91,35 @@ class ProfileFragment : Fragment() {
         viewModel.genderData.observe(viewLifecycleOwner,{
             gender.text = it
         })
-        viewModel.imageData.observe(viewLifecycleOwner, {
-            profileImg.setImageBitmap(viewModel.imageData.value)
-        })
+//        viewModel.imageData.observe(viewLifecycleOwner, {
+//            profileImg.setImageURI(viewModel.imageData.value)
+//        })
 
         swipeRefresh.setOnRefreshListener {
             val clsActivity = activity as AfterLoginNavigation
+
             clsActivity.retrieveData()
+//            clsActivity.retrieveImage()
             swipeRefresh.isRefreshing = false
         }
 
         editProfileBut.setOnClickListener {
-            startActivity(Intent(activity, EditProfileActivity::class.java))
+            val intent = Intent(activity,EditProfileActivity::class.java)
+//            intent.putExtra("profileImageUri",viewModel.imageData.value)
+            intent.putExtra("name",viewModel.nameData.value)
+            val tempGender = viewModel.genderData.value.toString().split(",")
+            intent.putExtra("gender",tempGender[0])
+            intent.putExtra("birthday",viewModel.birthData.value)
+            intent.putExtra("course",viewModel.courseData.value)
+            intent.putExtra("semester",viewModel.semesterData.value)
+            intent.putExtra("countryCode",viewModel.countryCodeData.value)
+            val tempPhone = viewModel.phoneData.value.toString().split(" ")
+            intent.putExtra("phone",tempPhone[1])
+            startActivity(intent)
         }
 
         logoutBut.setOnClickListener {
-            //FirebaseAuth.getInstance().signOut()
+            FirebaseAuth.getInstance().signOut()
             startActivity(Intent(activity, Activity4Login::class.java))
             activity?.finish()
         }

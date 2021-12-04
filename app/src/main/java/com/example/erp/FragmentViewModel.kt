@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class FragmentViewModel : ViewModel() {
-    lateinit var imageDataRef : Bitmap
+//    lateinit var imageDataRef : Uri
     val nameData = MutableLiveData<String>()
     val srnData = MutableLiveData<String>()
     val emailData = MutableLiveData<String>()
@@ -17,8 +17,8 @@ class FragmentViewModel : ViewModel() {
     val courseData = MutableLiveData<String>()
     val birthData = MutableLiveData<String>()
     val genderData = MutableLiveData<String>()
-    val imageData = MutableLiveData<Bitmap>()
-
+    val countryCodeData = MutableLiveData<String>()
+//    val imageData = MutableLiveData<Uri>()
 
     fun setName (newData : String) {
         nameData.value = newData
@@ -44,8 +44,11 @@ class FragmentViewModel : ViewModel() {
     fun setGender (newData: String){
         genderData.value = newData
     }
-    fun setImage (newData: Bitmap) {
-        imageData.value = newData
-        imageDataRef = newData
+    fun setCountryCode (newData: String){
+        countryCodeData.value = newData
     }
+//    fun setImage (newData: Uri) {
+//        imageData.value = newData
+//        imageDataRef = newData
+//    }
 }
