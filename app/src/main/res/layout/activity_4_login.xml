@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity4Login"
+    android:background="?attr/colorSurface"
+    android:id="@+id/activity4LoginLayout">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/revaLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+        <ImageView
+            android:id="@+id/titleImg"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_120sdp"
+            android:src="@drawable/erp2"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/revaLogo"
+            tools:ignore="ContentDescription" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="148dp"
+                android:layout_height="28dp"
+                android:gravity="center"
+                android:layout_marginBottom="3sp"
+                android:layout_gravity="center"
+                android:text="Welcome Back!"
+                android:textColor="?android:textColorPrimary"
+                android:textColorLink="?attr/colorOnSecondary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose a"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Login Type "
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="to continue"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15sp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="30sp"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/linearLayout3"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginBottom="15sp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15sp"
+                    android:hint="Login Type"
+                    tools:ignore="HardcodedText">
+                    <AutoCompleteTextView
+                        android:id="@+id/loginType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAutofill="no"
+                        android:inputType="none"
+                        android:cursorVisible="false"
+                        tools:ignore="HardcodedText,LabelFor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:visibility="gone"
+                    android:id="@+id/firstBoxLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15sp"
+                    app:startIconTint="?attr/colorPrimary"
+                    tools:ignore="HardcodedText">
+                    <EditText
+                        android:id="@+id/firstBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        tools:ignore="HardcodedText,LabelFor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordBoxLayout"
+                    android:visibility="gone"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    app:passwordToggleEnabled="true"
+                    tools:ignore="HardcodedText"
+                    app:startIconDrawable="@drawable/ic_twotone_lock_24"
+                    app:startIconTint="?attr/colorPrimary">
+                    <EditText
+                        android:id="@+id/passwordBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        tools:ignore="HardcodedText,LabelFor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/forgotPasswordLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="15sp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot Password?"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/forgotPasswordText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:text="Contact Admin"
+                    android:textColor="?attr/colorPrimary"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/buttonsRelativeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="30dp">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/loginButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:stateListAnimator="@null"
+                    android:text="login"
+                    app:cornerRadius="100sp"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/progressBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="false"
+        tools:ignore="KeyboardInaccessibleWidget">
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"/>
+    </RelativeLayout>
+</FrameLayout>

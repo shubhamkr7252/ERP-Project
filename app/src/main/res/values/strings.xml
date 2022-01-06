@@ -18,31 +18,26 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="title_activity_after_login">AfterLogin</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="semesters">
-        <item>Semester 1</item>
-        <item>Semester 2</item>
-        <item>Semester 3</item>
-        <item>Semester 4</item>
-        <item>Semester 5</item>
-        <item>Semester 6</item>
-        <item>Semester 7</item>
-        <item>Semester 8</item>
-    </string-array>
-    <string-array name="courses">
-        <item>BSc Research</item>
-        <item>BTech CSE</item>
-        <item>BCA</item>
-        <item>BBA</item>
-    </string-array>
-    <string-array name="countryCodes">
-        <item>+91 India</item>
-        <item>+1 USA</item>
-        <item>+44 United Kingdom</item>
-        <item>+880 Bangladesh</item>
+    <string-array name="loginTypes">
+        <item>Admin</item>
+        <item>Faculty</item>
+        <item>Student</item>
     </string-array>
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
         <item>Others</item>
     </string-array>
+
+    <string name="title_activity_acitvity_add_course">AcitvityAddCourse</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="select_mail_application_title" />
+    <string name="save">Save</string>
 </resources>

@@ -5,24 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreenActivity"
-    android:background="?android:statusBarColor"
-    android:id="@+id/splashScreen">
+    android:id="@+id/revaUni"
+    android:background="?android:statusBarColor">
 
     <ImageView
-        android:id="@+id/revaUni"
-        android:layout_width="300sp"
-        android:layout_height="300sp"
+        android:id="@+id/imageView"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/color"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        android:src="@drawable/erp2"
+        app:layout_constraintBottom_toTopOf="@+id/lottieAnimationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading_3_circle.json"
+        app:lottie_loop="false"
+        app:lottie_speed="1" />
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
+        android:layout_marginBottom="15sp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
