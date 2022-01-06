@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurfaceVariant"
+    android:id="@+id/parentFrameLayout"
+    tools:context=".ActivityTeacherList">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- other content in the activity -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10sp">
+
+                    <ImageView
+                        android:id="@+id/backButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="30sp"
+                        android:padding="10sp"
+                        android:src="@drawable/ic_outline_close_24"
+                        android:stateListAnimator="@null"
+                        android:text="Go Back"
+                        app:cornerRadius="100sp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:text="Teachers List"
+                        android:textColor="?android:textColorPrimary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+                    <ImageView
+                        android:id="@+id/refreshButton"
+                        android:padding="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="30sp"
+                        android:stateListAnimator="@null"
+                        app:cornerRadius="100sp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        tools:ignore="HardcodedText" />
+                </RelativeLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:dividerInsetEnd="0sp"
+                    app:dividerInsetStart="0sp" />
+            </LinearLayout>
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/teacherRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarSize="5sp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/recycler_view_teacher_list_item" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/obstructor"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="false"
+        android:background="#cc000000"
+        tools:ignore="KeyboardInaccessibleWidget" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:gravity="end"
+        android:orientation="vertical">
+        <com.google.android.material.card.MaterialCardView
+            android:visibility="gone"
+            android:id="@+id/fabListMenuLayout"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            style="@style/Widget.Material3.CardView.Outlined">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/revokeCourseFab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    style="@style/Widget.Material3.CardView.Filled">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Revoke Course"
+                        android:textStyle="bold"
+                        android:layout_marginStart="25sp"
+                        android:layout_marginVertical="20sp"
+                        android:gravity="center_vertical"
+                        app:drawableStartCompat="@drawable/ic_outline_bookmark_remove_24"
+                        android:drawablePadding="5sp"/>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:dividerInsetEnd="0sp"
+                    app:dividerInsetStart="0sp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/assignCourseFab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    style="@style/Widget.Material3.CardView.Filled">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Assign Course"
+                        android:textStyle="bold"
+                        android:layout_marginStart="25sp"
+                        android:layout_marginVertical="20sp"
+                        android:gravity="center_vertical"
+                        app:drawableStartCompat="@drawable/ic_outline_bookmark_add_24"
+                        android:drawablePadding="5sp"/>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:dividerInsetEnd="0sp"
+                    app:dividerInsetStart="0sp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/removeTeacherFab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    style="@style/Widget.Material3.CardView.Filled">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Remove Teacher"
+                        android:layout_marginVertical="20sp"
+                        android:layout_marginStart="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5sp"
+                        app:drawableStartCompat="@drawable/ic_outline_person_remove_24" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:dividerInsetEnd="0sp"
+                    app:dividerInsetStart="0sp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/addTeacherFab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    style="@style/Widget.Material3.CardView.Filled">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="Add Teacher"
+                        android:layout_marginStart="25sp"
+                        android:layout_marginVertical="20sp"
+                        android:drawablePadding="5sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_person_add_alt_24"/>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/editTeacherFab"
+            app:icon="@drawable/ic_twotone_edit_24"
+            android:stateListAnimator="@null"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>
