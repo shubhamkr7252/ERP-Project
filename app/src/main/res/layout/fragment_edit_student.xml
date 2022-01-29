@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".admin_view.student_list_view.FragmentEditStudent"
+    android:background="?attr/colorSurface"
+    android:id="@+id/parentFrameLayout"
+    android:clickable="true"
+    android:focusable="false"
+    tools:ignore="KeyboardInaccessibleWidget">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stateListAnimator="@null"
+            android:layout_marginHorizontal="15sp"
+            android:layout_marginVertical="15sp"
+            style="@style/Widget.Material3.CardView.Outlined"
+            app:cardBackgroundColor="?attr/colorOnPrimary">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="?attr/colorSurface">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/backButton"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_marginTop="20sp"
+                        android:layout_width="wrap_content"
+                        app:backgroundTint="?attr/colorError"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginBottom="15sp"
+                        android:stateListAnimator="@null"
+                        android:text="Cancel"
+                        app:cornerRadius="100sp"
+                        android:textColor="?attr/colorOnPrimary"
+                        app:iconTint="?attr/colorOnPrimary"
+                        app:icon="@drawable/ic_outline_close_24"
+                        app:iconGravity="textStart"
+                        tools:ignore="HardcodedText" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25sp"
+                        android:layout_marginBottom="20sp"
+                        android:layout_gravity="start"
+                        android:text="Edit Student"
+                        android:textColor="?android:textColorPrimary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        app:dividerInsetEnd="0sp"
+                        app:dividerInsetStart="0sp"/>
+                </LinearLayout>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:scrollbars="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:layout_marginTop="25sp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/editProfileNameIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10sp"
+                                android:src="@drawable/ic_outline_person_24"
+                                android:visibility="visible"
+                                app:tint="?attr/colorPrimary" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Full Name"
+                                tools:ignore="HardcodedText">
+
+                                <EditText
+                                    android:id="@+id/name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="text"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10sp"
+                                android:src="@drawable/ic_outline_person_24"
+                                android:visibility="invisible"
+                                app:tint="?attr/colorPrimary" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Gender"
+                                tools:ignore="HardcodedText">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/gender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="none"
+                                    app:drawableTint="?attr/colorPrimary"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/editProfileBirthdayIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10sp"
+                                android:src="@drawable/ic_outline_cake_24"
+                                app:tint="?attr/colorPrimary" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Birthday"
+                                tools:ignore="HardcodedText">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/birthday"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:cursorVisible="false"
+                                    android:importantForAutofill="no"
+                                    android:inputType="none"
+                                    tools:ignore="LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/editProfileCollegeIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10sp"
+                                android:src="@drawable/ic_outline_school_24"
+                                app:tint="?attr/colorPrimary" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Batch"
+                                tools:ignore="HardcodedText">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/batch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="none"
+                                    app:drawableTint="?attr/colorPrimary"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10sp"
+                                android:src="@drawable/ic_outline_school_24"
+                                android:visibility="invisible"
+                                app:tint="?attr/colorPrimary" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/addStudentSemesterSelectInputLayout"
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Semester"
+                                tools:ignore="HardcodedText">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/semester"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="none"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/editProfilePhoneIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10sp"
+                                android:src="@drawable/ic_outline_phone_24"
+                                app:tint="?attr/colorPrimary" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Phone"
+                                tools:ignore="HardcodedText">
+
+                                <EditText
+                                    android:id="@+id/phone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="phone"
+                                    app:drawableTint="?attr/colorPrimary"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/confirmBut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:stateListAnimator="@null"
+                            android:text="Save"
+                            android:layout_marginBottom="30sp"
+                            app:iconGravity="textStart" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:clickable="true"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"/>
+    </RelativeLayout>
+
+</FrameLayout>
