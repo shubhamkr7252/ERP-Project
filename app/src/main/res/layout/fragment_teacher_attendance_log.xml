@@ -1,46 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ActivityAfterTeacherLoginNavigation">
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_marginBottom="10sp"
+        android:layout_height="match_parent"
+        tools:context=".teacher_view.ActivityAfterTeacherLoginNavigation">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbarSize="5sp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/recycler_view_teacher_attendance_log_list_item"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_marginBottom="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/recycler_view_teacher_attendance_log_list_item" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="top"
             app:dividerInsetEnd="0sp"
-            app:dividerInsetStart="0sp"
-            android:layout_alignParentTop="true"/>
+            app:dividerInsetStart="0sp" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/addAttendanceBut"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="20sp"
             android:layout_marginBottom="20sp"
-            app:icon="@drawable/ic_baseline_post_add_24" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</FrameLayout>
+            android:layout_gravity="bottom|end">
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="20sp"
+                android:stateListAnimator="@null"
+                app:elevation="0dp"
+                app:icon="@drawable/ic_baseline_search_24"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:visibility="gone"
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20sp"
+                android:stateListAnimator="@null"
+                android:text="Add Attendance"
+                app:elevation="0dp"
+                app:icon="@drawable/ic_baseline_add_24"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</layout>

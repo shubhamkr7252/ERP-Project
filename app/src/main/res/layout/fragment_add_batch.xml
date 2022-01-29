@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentAddBatch"
+    tools:context=".admin_view.batch_list_view.FragmentAddBatch"
     android:background="?attr/colorSurface"
     android:clickable="true"
     android:focusable="false"

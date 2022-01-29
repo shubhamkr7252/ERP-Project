@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lightColorPrimary">#FFCC6C00</color>
-    <color name="darkColorPrimary">#ffc08f5c</color>
-    <color name="dark_1">#fff37435</color>
+    <color name="lightColorPrimary">#93632F</color>
+    <color name="darkColorPrimary">#D6AC7D</color>
+    <color name="splashColorPrimary">#A17C53</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="darkGrey">#ff121212</color>
-    <color name="backgroundTint">#fff37435</color>
 </resources>

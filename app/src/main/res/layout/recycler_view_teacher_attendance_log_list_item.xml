@@ -19,18 +19,16 @@
             android:padding="10sp"
             android:layout_marginVertical="5sp">
             <TextView
-                android:id="@+id/tv_course_date"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
-                android:text="Date"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
-                android:text="Time"
                 android:textSize="14sp" />
             <TextView
                 android:id="@+id/tv_student_strength_details"
@@ -38,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
                 android:textStyle="bold"
-                android:text="Present: Absent: "
                 android:textSize="14sp" />
 
             <LinearLayout

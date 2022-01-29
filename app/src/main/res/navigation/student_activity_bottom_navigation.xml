@@ -3,15 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/fragmentAttendanceLog">
+    app:startDestination="@id/fragmentStudentAttendanceLog">
     <fragment
-        android:id="@+id/fragmentAttendanceLog"
-        android:name="com.example.erp.FragmentStudentAttendanceLog"
-        android:label="fragment_attendance_log"
-        tools:layout="@layout/fragment_student_attendance_log" />
+        android:id="@+id/fragmentStudentAttendanceLog"
+        android:name="com.app.erp.student_view.FragmentStudentAttendanceLog"
+        android:label="fragment_attendance_log" />
     <fragment
         android:id="@+id/fragmentStudentProfile"
-        android:name="com.example.erp.FragmentStudentProfile"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_student_profile" />
+        android:name="com.app.erp.student_view.FragmentStudentProfile"
+        android:label="fragment_profile" />
 </navigation>

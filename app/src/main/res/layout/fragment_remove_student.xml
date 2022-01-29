@@ -7,7 +7,7 @@
     android:background="?attr/colorSurface"
     android:clickable="true"
     android:id="@+id/parentFrameLayout"
-    tools:context=".FragmentRemoveStudent"
+    tools:context=".admin_view.student_list_view.FragmentRemoveStudent"
     android:focusable="false"
     tools:ignore="KeyboardInaccessibleWidget">
     <LinearLayout

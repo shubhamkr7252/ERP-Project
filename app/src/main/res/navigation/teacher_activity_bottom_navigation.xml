@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/fragmentTeacherAttendanceLog"
-        android:name="com.example.erp.FragmentTeacherAttendanceLog"
+        android:name="com.app.erp.teacher_view.FragmentTeacherAttendanceLog"
         android:label="Attendance"
         tools:layout="@layout/fragment_teacher_attendance_log" />
     <fragment
         android:id="@+id/fragmentTeacherProfile"
-        android:name="com.example.erp.FragmentTeacherProfile"
+        android:name="com.app.erp.teacher_view.FragmentTeacherProfile"
         android:label="Profile"
         tools:layout="@layout/fragment_teacher_profile" />
 </navigation>

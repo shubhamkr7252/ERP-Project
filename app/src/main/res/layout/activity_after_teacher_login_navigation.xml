@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/parentFrameLayout"
-    tools:context=".ActivityAfterTeacherLoginNavigation">
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addAttendance"
+            type="com.app.erp.teacher_view.ActivityAfterTeacherLoginNavigation" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <fragment
-            android:id="@+id/fragmentContainerView"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        android:id="@+id/parentFrameLayout"
+        tools:context=".teacher_view.ActivityAfterTeacherLoginNavigation">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/teacher_activity_bottom_navigation"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp" />
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <fragment
+                android:id="@+id/fragmentContainerView"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:layout_gravity="bottom"
+                app:menu="@menu/teacher_activity_bottom_menu" >
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/ex_fab_add_attendance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_baseline_add_24"
+                    app:elevation="0dp"
+                    android:stateListAnimator="@null"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+        </LinearLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:labelVisibilityMode="selected"
-            app:menu="@menu/teacher_activity_bottom_menu"/>
-    </LinearLayout>
-    <RelativeLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</FrameLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/secondaryFragmentContainerTeacher" />
+    </FrameLayout>
+</layout>

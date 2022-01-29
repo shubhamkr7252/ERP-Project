@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentAssignTeacherCourse_CourseList"
+    tools:context=".admin_view.course_list_view.FragmentAssignTeacherCourse_CourseList"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorSurface"
     android:clickable="true"

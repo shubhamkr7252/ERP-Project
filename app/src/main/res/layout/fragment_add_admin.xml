@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentAddAdmin"
+    tools:context=".admin_view.admin_list_view.FragmentAddAdmin"
     android:background="?attr/colorSurface"
     android:clickable="true"
     android:focusable="false"
@@ -92,7 +92,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginEnd="10sp"
-                                android:src="@drawable/ic_twotone_person_24"
+                                android:src="@drawable/ic_twotone_admin_panel_settings_24"
                                 app:tint="?attr/colorPrimary" />
 
                             <com.google.android.material.textfield.TextInputLayout
@@ -228,24 +228,25 @@
                                 android:layout_marginEnd="10sp"
                                 android:src="@drawable/ic_twotone_email_24"
                                 app:tint="?attr/colorPrimary" />
-
                             <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Mail"
+                                android:id="@+id/emailLayout"
                                 tools:ignore="HardcodedText">
 
-                                <EditText
+                                <AutoCompleteTextView
                                     android:id="@+id/email"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:importantForAutofill="no"
-                                    android:inputType="textEmailAddress"
-                                    tools:ignore="HardcodedText,LabelFor" />
+                                    android:cursorVisible="false"
+                                    android:inputType="none"
+                                    android:clickable="false"
+                                    tools:ignore="HardcodedText,LabelFor,TextFields" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

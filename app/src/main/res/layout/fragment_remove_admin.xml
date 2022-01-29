@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentRemoveAdmin"
+    tools:context=".admin_view.admin_list_view.FragmentRemoveAdmin"
     android:background="?attr/colorSurface"
     android:clickable="true"
     android:focusable="false"
@@ -50,6 +50,7 @@
                         app:iconGravity="textStart"
                         tools:ignore="HardcodedText" />
                     <TextView
+                        android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25sp"
@@ -80,7 +81,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="20sp"
                             android:layout_marginTop="25sp"
-                            android:layout_marginBottom="25sp"
                             android:orientation="horizontal">
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -90,18 +90,84 @@
                                 app:tint="?attr/colorPrimary"
                                 android:layout_gravity="center_vertical"/>
                             <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Email"
                                 tools:ignore="HardcodedText">
 
-                                <EditText
+                                <AutoCompleteTextView
                                     android:id="@+id/email"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:importantForAutofill="no"
                                     android:inputType="textEmailAddress"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginTop="15sp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_twotone_admin_panel_settings_24"
+                                android:layout_marginEnd="10sp"
+                                app:tint="?attr/colorPrimary"
+                                android:layout_gravity="center_vertical"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Code"
+                                tools:ignore="HardcodedText">
+
+                                <EditText
+                                    android:id="@+id/code"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="none"
+                                    android:cursorVisible="false"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    tools:ignore="HardcodedText,LabelFor" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_marginBottom="25sp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:visibility="invisible"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_twotone_admin_panel_settings_24"
+                                android:layout_marginEnd="10sp"
+                                app:tint="?attr/colorPrimary"
+                                android:layout_gravity="center_vertical"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Name"
+                                tools:ignore="HardcodedText">
+
+                                <EditText
+                                    android:id="@+id/name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:importantForAutofill="no"
+                                    android:inputType="none"
+                                    android:cursorVisible="false"
+                                    android:clickable="false"
+                                    android:focusable="false"
                                     tools:ignore="HardcodedText,LabelFor" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>

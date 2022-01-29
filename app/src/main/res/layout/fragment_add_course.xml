@@ -10,7 +10,7 @@
     android:id="@+id/parentFrameLayout"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentAddCourse"
+    tools:context=".admin_view.course_list_view.FragmentAddCourse"
     tools:ignore="KeyboardInaccessibleWidget">
     <LinearLayout
         android:layout_width="match_parent"

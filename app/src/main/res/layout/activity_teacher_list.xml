@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorSurfaceVariant"
     android:id="@+id/parentFrameLayout"
-    tools:context=".ActivityTeacherList">
+    tools:context=".admin_view.teacher_list_view.ActivityTeacherList">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -76,7 +76,6 @@
             android:id="@+id/teacherRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbarSize="5sp"
             android:scrollbars="vertical"
             tools:listitem="@layout/recycler_view_teacher_list_item" />
     </LinearLayout>

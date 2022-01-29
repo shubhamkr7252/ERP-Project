@@ -7,8 +7,11 @@
     app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="0sp">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/primaryLayout"
+        style="@style/Widget.Material3.CardView.Filled"
+        app:cardCornerRadius="0dp"
+        app:cardBackgroundColor="?attr/colorOnPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
@@ -62,15 +65,13 @@
                     android:id="@+id/checkbox"
                     android:button="@drawable/ic_baseline_check_24"
                     android:padding="5sp"
-                    android:buttonTint="?attr/textFillColor"
-                    android:textColor="?attr/textFillColor"
                     android:layout_marginHorizontal="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Present"/>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

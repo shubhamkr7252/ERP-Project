@@ -1,453 +1,463 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FragmentStudentProfile"
-    android:background="?attr/colorSurface">
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/profileFragmentSwipeRefresh">
-        <ScrollView
-            android:id="@+id/profileFragmentScrollViewLayout"
+        tools:context=".student_view.FragmentStudentProfile"
+        android:background="?attr/colorSurface">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true">
-            <RelativeLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_marginTop="10sp"
-                    android:id="@+id/profileFragmentLayout"
+                android:layout_height="match_parent"
+                android:id="@+id/swipeRefreshLayout">
+
+                <ScrollView
+                    android:id="@+id/profileFragmentScrollViewLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true">
 
-                    <TextView
-                        android:id="@+id/tv_result_name"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="40sp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/source_code_pro_regular"
-                        android:gravity="center"
-                        android:maxLines="2"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/tv_result_srn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="40sp"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        android:textSize="14sp"
-                        android:textStyle="italic|bold" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="10sp"
-                        tools:ignore="SmallSp" />
-
-                    <Button
-                        android:id="@+id/changePasswordBut"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:stateListAnimator="@null"
-                        android:text="Change Password"
-                        android:textAllCaps="false"
-                        app:cornerRadius="100dp"
-                        app:icon="@drawable/ic_twotone_lock_24"
-                        app:iconGravity="textStart"
-                        app:iconPadding="5sp"
-                        tools:ignore="HardcodedText" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="25sp"
-                        tools:ignore="SmallSp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="20sp"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.card.MaterialCardView
-                            style="@style/Widget.Material3.CardView.Filled"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="10sp"
-                            android:layout_weight="1"
-                            app:contentPadding="15sp">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5sp"
-                                    android:gravity="center"
-                                    android:text="Attendance\nPercentage"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/attendancePercentage"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text=""
-                                    android:textColor="?attr/colorPrimary" />
-                            </LinearLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            style="@style/Widget.Material3.CardView.Filled"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:contentPadding="15sp">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5sp"
-                                    android:gravity="center"
-                                    android:text="Classes\nAttended"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/attendedClasses"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text=""
-                                    android:textColor="?attr/colorPrimary" />
-                            </LinearLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            style="@style/Widget.Material3.CardView.Filled"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10sp"
-                            android:layout_weight="1"
-                            app:contentPadding="15sp">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5sp"
-                                    android:gravity="center"
-                                    android:text="Classes\nNot Attended"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/nonAttendanceClasses"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text=""
-                                    android:textColor="?attr/colorPrimary" />
-                            </LinearLayout>
-                        </com.google.android.material.card.MaterialCardView>
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="25sp"
-                        tools:ignore="SmallSp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25sp"
-                        android:layout_marginBottom="7sp"
-                        android:text="Academic Details :"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Widget.Material3.CardView.Filled"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20sp"
-                        android:layout_marginBottom="15sp"
-                        app:cardCornerRadius="5sp">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15sp"
+                            android:id="@+id/profileFragmentLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_twotone_school_24"
-                                    app:tint="?attr/colorPrimary" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
                                 <TextView
-                                    android:id="@+id/tv_result_batch"
+                                    android:id="@+id/tv_result_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginHorizontal="60sp"
+                                    android:fontFamily="@font/source_code_pro_regular"
+                                    android:gravity="center"
+                                    android:textSize="24sp" />
+
+                                <ImageView
+                                    android:id="@+id/menuBut"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="20sp"
+                                    android:padding="10sp"
+                                    android:src="@drawable/ic_baseline_more_vert_24" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/tv_result_srn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="40sp"
+                                android:gravity="center"
+                                android:textAllCaps="true"
+                                android:textSize="14sp"
+                                android:textStyle="italic|bold" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="10sp"
+                                tools:ignore="SmallSp" />
+
+                            <Button
+                                android:id="@+id/changePasswordBut"
+                                style="@style/Widget.Material3.Button.TonalButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:stateListAnimator="@null"
+                                android:text="Change Password"
+                                android:textAllCaps="false"
+                                app:cornerRadius="100dp"
+                                app:icon="@drawable/ic_twotone_lock_24"
+                                app:iconGravity="textStart"
+                                app:iconPadding="5sp"
+                                tools:ignore="HardcodedText" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="25sp"
+                                tools:ignore="SmallSp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="20sp"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    style="@style/Widget.Material3.CardView.Filled"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="10sp"
+                                    android:layout_weight="1"
+                                    app:contentPadding="15sp">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="5sp"
+                                            android:gravity="center"
+                                            android:text="Attendance\nPercentage"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/attendancePercentage"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text=""
+                                            android:textColor="?attr/colorPrimary" />
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    style="@style/Widget.Material3.CardView.Filled"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:contentPadding="15sp">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="5sp"
+                                            android:gravity="center"
+                                            android:text="Classes\nAttended"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/attendedClasses"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text=""
+                                            android:textColor="?attr/colorPrimary" />
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    style="@style/Widget.Material3.CardView.Filled"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10sp"
+                                    android:layout_weight="1"
+                                    app:contentPadding="15sp">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="5sp"
+                                            android:gravity="center"
+                                            android:text="Classes\nNot Attended"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/nonAttendanceClasses"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text=""
+                                            android:textColor="?attr/colorPrimary" />
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
                             </LinearLayout>
 
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="25sp"
+                                tools:ignore="SmallSp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="25sp"
+                                android:layout_marginBottom="7sp"
+                                android:text="Academic Details :"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Widget.Material3.CardView.Filled"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="20sp"
+                                android:layout_marginBottom="15sp"
+                                app:cardCornerRadius="5sp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_twotone_school_24"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_batch"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_outline_school_24"
+                                            android:visibility="invisible"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_semester"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/secondaryFragmentContainer"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="10sp"
+                                tools:ignore="SmallSp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="25sp"
+                                android:layout_marginBottom="7sp"
+                                android:text="Personal Details :"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Widget.Material3.CardView.Filled"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="20sp"
+                                android:layout_marginBottom="15sp"
+                                app:cardCornerRadius="5sp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_twotone_cake_24"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_birthday"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:id="@+id/genderLayout"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_outline_school_24"
+                                            android:visibility="invisible"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_gender"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_outline_school_24"
+                                            android:visibility="invisible"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_age"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_twotone_email_24"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_email"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:maxLines="2"
+                                            android:ellipsize="end"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15sp"
+                                            android:layout_marginEnd="15sp"
+                                            android:src="@drawable/ic_twotone_phone_24"
+                                            app:tint="?attr/colorPrimary" />
+
+                                        <TextView
+                                            android:id="@+id/tv_result_phone"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="50sp"
+                                            android:gravity="center_vertical"
+                                            android:paddingVertical="5sp"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="20sp"
                                 android:orientation="horizontal">
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
+                                <TextView
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_outline_school_24"
-                                    android:visibility="invisible"
-                                    app:tint="?attr/colorPrimary" />
+                                    android:gravity="center"
+                                    android:text="Change Personal Details?" />
 
                                 <TextView
-                                    android:id="@+id/tv_result_semester"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
+                                    android:id="@+id/contactAdminTV"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5sp"
+                                    android:gravity="center"
+                                    android:text="Contact Admin"
+                                    android:textColor="?attr/colorPrimary" />
                             </LinearLayout>
                         </LinearLayout>
+                    </RelativeLayout>
+                </ScrollView>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </LinearLayout>
 
-                        <RelativeLayout
-                            android:id="@+id/secondaryFragmentContainer"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="10sp"
-                        tools:ignore="SmallSp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25sp"
-                        android:layout_marginBottom="7sp"
-                        android:text="Personal Details :"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Widget.Material3.CardView.Filled"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20sp"
-                        android:layout_marginBottom="15sp"
-                        app:cardCornerRadius="5sp">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_twotone_cake_24"
-                                    app:tint="?attr/colorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/tv_result_birthday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:id="@+id/genderLayout"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_outline_school_24"
-                                    android:visibility="invisible"
-                                    app:tint="?attr/colorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/tv_result_gender"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_outline_school_24"
-                                    android:visibility="invisible"
-                                    app:tint="?attr/colorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/tv_result_age"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_twotone_email_24"
-                                    app:tint="?attr/colorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/tv_result_email"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:maxLines="2"
-                                    android:ellipsize="end"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="15sp"
-                                    android:layout_marginEnd="15sp"
-                                    android:src="@drawable/ic_twotone_phone_24"
-                                    app:tint="?attr/colorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/tv_result_phone"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50sp"
-                                    android:gravity="center_vertical"
-                                    android:paddingVertical="5sp"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="10sp"
-                        tools:ignore="SmallSp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/logoutBut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:minWidth="0dp"
-                        android:stateListAnimator="@null"
-                        android:text="Logout"
-                        app:icon="@drawable/ic_twotone_logout_24"
-                        app:iconPadding="5dp" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="10sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="20sp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Change Personal Details?" />
-
-                        <TextView
-                            android:id="@+id/contactAdminTV"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5sp"
-                            android:gravity="center"
-                            android:text="Contact Admin"
-                            android:textColor="?attr/colorPrimary" />
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-        </ScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-</FrameLayout>
+    </FrameLayout>
+</layout>

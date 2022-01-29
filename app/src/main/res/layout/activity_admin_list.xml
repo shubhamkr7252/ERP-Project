@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:id="@+id/parentFrameLayout"
     android:background="?attr/colorSurfaceVariant"
-    tools:context=".ActivityAdminList">
+    tools:context=".admin_view.admin_list_view.ActivityAdminList"
+    tools:ignore="PrivateResource">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -72,7 +73,6 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbarSize="5sp"
             android:scrollbars="vertical"
             tools:listitem="@layout/recycler_view_admin_list_item" />
     </LinearLayout>

@@ -1,7 +1,7 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityStudentList"
+    tools:context=".admin_view.student_list_view.ActivityStudentList"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -150,7 +150,6 @@
             android:id="@+id/studentRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbarSize="5sp"
             android:scrollbars="vertical"
             tools:listitem="@layout/recycler_view_student_list_item" />
     </LinearLayout>
@@ -208,6 +207,30 @@
                     app:dividerInsetEnd="0sp"
                     app:dividerInsetStart="0sp" />
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/editStudentInfoFab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+                    style="@style/Widget.Material3.CardView.Filled">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Edit Student"
+                        android:layout_marginVertical="20sp"
+                        android:layout_marginStart="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5sp"
+                        app:drawableStartCompat="@drawable/ic_twotone_edit_24" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:dividerInsetEnd="0sp"
+                    app:dividerInsetStart="0sp" />
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/addStudentFab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -244,7 +267,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/editStudentFab"
-                app:icon="@drawable/ic_twotone_edit_24"
+                app:icon="@drawable/ic_twotone_add_circle_24"
                 android:stateListAnimator="@null"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
@@ -259,4 +282,16 @@
         android:id="@+id/relativeLayoutFragmentLayoutContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:clickable="true"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"/>
+    </RelativeLayout>
 </FrameLayout>

@@ -4,9 +4,17 @@
     <item
         android:id="@+id/fragmentTeacherAttendanceLog"
         android:title="Attendance"
-        android:icon="@drawable/ic_twotone_list_alt_24"/>
+        android:numericShortcut="0"
+        android:icon="@drawable/ic_outline_view_list_24"/>
+
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
     <item
         android:id="@+id/fragmentTeacherProfile"
+        android:numericShortcut="1"
         android:title="Profile"
-        android:icon="@drawable/ic_twotone_account_circle_24"/>
+        android:icon="@drawable/ic_outline_account_circle_24"/>
+
 </menu>
